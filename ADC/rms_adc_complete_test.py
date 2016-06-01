@@ -23,7 +23,9 @@ from esw_lib import read_adc
 
 ADC_MAX = 1023
 ADC_REF = 3.3
+VOLTS_PER_ADC = ADC_REF/ADC_MAX;
 DEBUG = 0
+ADC_CHANNELS = (7 , 6)
 ADC_CHANNEL = 7
 NUM_SAMPLES = 10000
 
@@ -45,66 +47,59 @@ GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
 """ --- START DATA SAMPLING --- """
+line = ''
+for adc_channel in ADC_CHANNELS:
+	main_values = np.zeros(NUM_SAMPLES)
+						
+	trim_pot = 0
+	tic = time.time()
+	for i in range(NUM_SAMPLES): 
+		# read the analog pin
+		trim_pot = read_adc(adc_channel,SPICLK,SPIMOSI,SPIMISO,SPICS)
 
-main_values = np.zeros(NUM_SAMPLES)
+		if DEBUG:
+			print "trim_pot:", trim_pot
 
-file = open("/home/pi/ESW/Pilot_1.x.x/ADC/datatest.txt","w")
-					
-trim_pot = 0
-tic = time.time()
-for i in range(NUM_SAMPLES): 
-	# read the analog pin
-	trim_pot = read_adc(ADC_CHANNEL,SPICLK,SPIMOSI,SPIMISO,SPICS)
+		# add the value to the array
+		main_values[i] = trim_pot
+	toc = time.time()
+		
+	""" --- END DATA SAMPLING --- """
 
-	if DEBUG:
-		print "trim_pot:", trim_pot
+	""" --- COLLATE AND OUTPUT RESULTS --- """
 
-	# add the value to the array
-	main_values[i] = trim_pot
-toc = time.time()
-	
-""" --- END DATA SAMPLING --- """
+	#print main_values
 
-""" --- COLLATE AND OUTPUT RESULTS --- """
+	avg = np.mean(main_values)
+	acrms = compute_acrms(main_values,avg)
+	vpp = (np.max(main_values)-np.min(main_values))
+	rms = compute_rms(main_values)
 
-print main_values
+	quan = 'V' if adc_channel % 2 == 0 else 'I'
+	unit = 'V' if quan == 'V' else 'A'
 
-avg = np.mean(main_values)
-acrms = compute_acrms(main_values,avg)
-vpp = (np.max(main_values)-np.min(main_values))
-rms = compute_rms(main_values)
+	line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+str(acrms*VOLTS_PER_ADC)+' '+unit
+	line += ', '+quan+'pp = '+str(vpp*VOLTS_PER_ADC)+' '+unit+'\n'
 
-#file.write("test")
-print main_values.shape
-print "mean:", avg, "||", avg/ADC_MAX*ADC_REF, "V"
-try:
-	#file.write('%s'  avg)
-	file.write('{} '.format(avg))
-except ValueError:
-	print "error"
-print "acrms:", acrms, "||", acrms/ADC_MAX*ADC_REF, "V"
-#file.write(acrms)
-file.write('{} '.format(acrms))
-print "Vpp:", vpp, "||", vpp/ADC_MAX*ADC_REF, "V"
-#file.write(vpp)
-file.write('{} '.format(vpp))
-print "rms:", rms, "||", rms/ADC_MAX*ADC_REF, "V"
-#file.write(rms)
-file.write('{} '.format(rms))
-file.close()
-
-print "time:", toc-tic, "secs || samples/sec:", NUM_SAMPLES/(toc-tic)
-
-f = open('/home/pi/ESW/Pilot_1.x.x/ADC/datatest.txt', 'r+')
-f.seek(0)
-var = f.readline()
-print var
+line = line.strip()
+f = open("/home/pi/ESW/Pilot_1.x.x/ADC/datatest.txt","w")
+f.write(line)
 f.close()
 
+
+text = ''
+f = open('/home/pi/ESW/Pilot_1.x.x/ADC/datatest.txt', 'r+')
+f.seek(0)
+for line in f:
+	text += line
+f.close()
+print text
+
+
 message = {
-'Text' : var,
-'SMSC' : {'Location':1},
-'Number' :'+15594929868'
+	'Text' : text,
+	'SMSC' : {'Location':1},
+	'Number' :'+15594929868'
 }
 
 sm = gammu.StateMachine()
@@ -112,3 +107,4 @@ sm.ReadConfig(0,0,'/etc/gammurc')
 sm.Init()
 sm.SendSMS(message)
 sm.Terminate()
+
