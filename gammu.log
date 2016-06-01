@@ -1,0 +1,424 @@
+[Gammu            - 1.33.0 built 08:46:05 Aug 14 2013 using GCC 4.6]
+[Connection       - "at"]
+[Connection index - 0]
+[Model type       - ""]
+[Device           - "/dev/ttyUSB0"]
+[Running on       - Linux, kernel 4.1.19-v7+ (#858 SMP Tue Mar 15 15:56:00 GMT 2016)]
+Serial device: DTR is up, RTS is up, CAR is down, CTS is down
+Setting speed to 19200
+[Module           - "auto"]
+Escaping SMS mode
+SENDING frametype 0x00/length 0x02/2
+1B |0D                                                          ..              
+Sending simple AT command to wake up some devices
+SENDING frametype 0x00/length 0x03/3
+41A|54T|0D                                                      AT.             
+1 "AT"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x09/9
+41A|54T|0D |0D |0A |4FO|4BK|0D |0A                              AT...OK..       
+Enabling echo
+SENDING frametype 0x00/length 0x05/5
+41A|54T|45E|311|0D                                              ATE1.           
+1 "ATE1"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x0B/11
+41A|54T|45E|311|0D |0D |0A |4FO|4BK|0D |0A                      ATE1...OK..     
+Trying Motorola mode switch
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|4DM|4FO|44D|45E|3D=|322|0D                          AT+MODE=2.      
+1 "AT+MODE=2"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x21/33
+41A|54T|2B+|4DM|4FO|44D|45E|3D=|322|0D |0D |0A |43C|4FO|4DM|4DM AT+MODE=2...COMM
+41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO|52R|54T|0D  AND NOT SUPPORT.
+0A                                                              .               
+Seems not to be supported
+Enabling CME errors
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|4DM|45E|45E|3D=|311|0D                          AT+CMEE=1.      
+1 "AT+CMEE=1"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x10/16
+41A|54T|2B+|43C|4DM|45E|45E|3D=|311|0D |0D |0A |4FO|4BK|0D |0A  AT+CMEE=1...OK..
+SENDING frametype 0x00/length 0x09/9
+41A|54T|2B+|43C|53S|43C|53S|3F?|0D                              AT+CSCS?.       
+1 "AT+CSCS?"
+2 "+CSCS: "GSM""
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x1F/31
+41A|54T|2B+|43C|53S|43C|53S|3F?|0D |0D |0A |2B+|43C|53S|43C|53S AT+CSCS?...+CSCS
+3A:|20 |22"|47G|53S|4DM|22"|0D |0A |0D |0A |4FO|4BK|0D |0A      : "GSM"....OK.. 
+SENDING frametype 0x00/length 0x08/8
+41A|54T|2B+|43C|47G|4DM|49I|0D                                  AT+CGMI.        
+1 "AT+CGMI"
+2 "huawei"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x18/24
+41A|54T|2B+|43C|47G|4DM|49I|0D |0D |0A |68h|75u|61a|77w|65e|69i AT+CGMI...huawei
+0D |0A |0D |0A |4FO|4BK|0D |0A                                  ....OK..        
+Manufacturer info received
+[Manufacturer: Huawei]
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|53S|43C|53S|3D=|3F?|0D                          AT+CSCS=?.      
+1 "AT+CSCS=?"
+2 "+CSCS: ("IRA","UCS2","GSM")"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x2F/47
+41A|54T|2B+|43C|53S|43C|53S|3D=|3F?|0D |0D |0A |2B+|43C|53S|43C AT+CSCS=?...+CSC
+53S|3A:|20 |28(|22"|49I|52R|41A|22"|2C,|22"|55U|43C|53S|322|22" S: ("IRA","UCS2"
+2C,|22"|47G|53S|4DM|22"|29)|0D |0A |0D |0A |4FO|4BK|0D |0A      ,"GSM")....OK.. 
+Chosen GSM as normal charset
+Chosen UCS2 as unicode charset
+Getting model
+SENDING frametype 0x00/length 0x08/8
+41A|54T|2B+|43C|47G|4DM|4DM|0D                                  AT+CGMM.        
+1 "AT+CGMM"
+2 "E173"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x16/22
+41A|54T|2B+|43C|47G|4DM|4DM|0D |0D |0A |45E|311|377|333|0D |0A  AT+CGMM...E173..
+0D |0A |4FO|4BK|0D |0A                                          ..OK..          
+[Model name: `E173']
+[Model data: `E173']
+[Model data: `E173']
+[Connected model  - "E173"]
+Checking for OBEX support
+SENDING frametype 0x00/length 0x0B/11
+41A|54T|2B+|43C|50P|52R|4FO|54T|3D=|3F?|0D                      AT+CPROT=?.     
+1 "AT+CPROT=?"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x22/34
+41A|54T|2B+|43C|50P|52R|4FO|54T|3D=|3F?|0D |0D |0A |43C|4FO|4DM AT+CPROT=?...COM
+4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO|52R|54T MAND NOT SUPPORT
+0D |0A                                                          ..              
+Checking for SYNCML/OBEX support
+SENDING frametype 0x00/length 0x0C/12
+41A|54T|2B+|53S|59Y|4EN|43C|4DM|4CL|3D=|3F?|0D                  AT+SYNCML=?.    
+1 "AT+SYNCML=?"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x23/35
+41A|54T|2B+|53S|59Y|4EN|43C|4DM|4CL|3D=|3F?|0D |0D |0A |43C|4FO AT+SYNCML=?...CO
+4DM|4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO|52R MMAND NOT SUPPOR
+54T|0D |0A                                                      T..             
+Checking for SYNCML/OBEX support
+SENDING frametype 0x00/length 0x0D/13
+41A|54T|24$|54T|53S|53S|50P|43C|53S|57W|3D=|3F?|0D              AT$TSSPCSW=?.   
+1 "AT$TSSPCSW=?"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x24/36
+41A|54T|24$|54T|53S|53S|50P|43C|53S|57W|3D=|3F?|0D |0D |0A |43C AT$TSSPCSW=?...C
+4FO|4DM|4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO OMMAND NOT SUPPO
+52R|54T|0D |0A                                                  RT..            
+[Module           - "A2D|iPAQ|at|M20|S25|MC35|TC35|C35i|S65|S300|5110|5130|5190|5210|6110|6130|6150|6190|6210|6250|6310|6310i|6510|7110|8210|8250|8290|8310|8390|8850|8855|8890|8910|9110|9210"]
+Escaping SMS mode
+SENDING frametype 0x00/length 0x02/2
+1B |0D                                                          ..              
+Sending simple AT command to wake up some devices
+SENDING frametype 0x00/length 0x03/3
+41A|54T|0D                                                      AT.             
+1 "AT"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x09/9
+41A|54T|0D |0D |0A |4FO|4BK|0D |0A                              AT...OK..       
+Enabling echo
+SENDING frametype 0x00/length 0x05/5
+41A|54T|45E|311|0D                                              ATE1.           
+1 "ATE1"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x0B/11
+41A|54T|45E|311|0D |0D |0A |4FO|4BK|0D |0A                      ATE1...OK..     
+Trying Motorola mode switch
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|4DM|4FO|44D|45E|3D=|322|0D                          AT+MODE=2.      
+1 "AT+MODE=2"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x21/33
+41A|54T|2B+|4DM|4FO|44D|45E|3D=|322|0D |0D |0A |43C|4FO|4DM|4DM AT+MODE=2...COMM
+41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO|52R|54T|0D  AND NOT SUPPORT.
+0A                                                              .               
+Seems not to be supported
+Enabling CME errors
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|4DM|45E|45E|3D=|311|0D                          AT+CMEE=1.      
+1 "AT+CMEE=1"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x10/16
+41A|54T|2B+|43C|4DM|45E|45E|3D=|311|0D |0D |0A |4FO|4BK|0D |0A  AT+CMEE=1...OK..
+SENDING frametype 0x00/length 0x09/9
+41A|54T|2B+|43C|53S|43C|53S|3F?|0D                              AT+CSCS?.       
+1 "AT+CSCS?"
+2 "+CSCS: "GSM""
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x1F/31
+41A|54T|2B+|43C|53S|43C|53S|3F?|0D |0D |0A |2B+|43C|53S|43C|53S AT+CSCS?...+CSCS
+3A:|20 |22"|47G|53S|4DM|22"|0D |0A |0D |0A |4FO|4BK|0D |0A      : "GSM"....OK.. 
+SENDING frametype 0x00/length 0x08/8
+41A|54T|2B+|43C|47G|4DM|49I|0D                                  AT+CGMI.        
+1 "AT+CGMI"
+2 "huawei"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x18/24
+41A|54T|2B+|43C|47G|4DM|49I|0D |0D |0A |68h|75u|61a|77w|65e|69i AT+CGMI...huawei
+0D |0A |0D |0A |4FO|4BK|0D |0A                                  ....OK..        
+Manufacturer info received
+[Manufacturer: Huawei]
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|53S|43C|53S|3D=|3F?|0D                          AT+CSCS=?.      
+1 "AT+CSCS=?"
+2 "+CSCS: ("IRA","UCS2","GSM")"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x2F/47
+41A|54T|2B+|43C|53S|43C|53S|3D=|3F?|0D |0D |0A |2B+|43C|53S|43C AT+CSCS=?...+CSC
+53S|3A:|20 |28(|22"|49I|52R|41A|22"|2C,|22"|55U|43C|53S|322|22" S: ("IRA","UCS2"
+2C,|22"|47G|53S|4DM|22"|29)|0D |0A |0D |0A |4FO|4BK|0D |0A      ,"GSM")....OK.. 
+Chosen GSM as normal charset
+Chosen UCS2 as unicode charset
+Checking for OBEX support
+SENDING frametype 0x00/length 0x0B/11
+41A|54T|2B+|43C|50P|52R|4FO|54T|3D=|3F?|0D                      AT+CPROT=?.     
+1 "AT+CPROT=?"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x22/34
+41A|54T|2B+|43C|50P|52R|4FO|54T|3D=|3F?|0D |0D |0A |43C|4FO|4DM AT+CPROT=?...COM
+4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO|52R|54T MAND NOT SUPPORT
+0D |0A                                                          ..              
+Checking for SYNCML/OBEX support
+SENDING frametype 0x00/length 0x0C/12
+41A|54T|2B+|53S|59Y|4EN|43C|4DM|4CL|3D=|3F?|0D                  AT+SYNCML=?.    
+1 "AT+SYNCML=?"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x23/35
+41A|54T|2B+|53S|59Y|4EN|43C|4DM|4CL|3D=|3F?|0D |0D |0A |43C|4FO AT+SYNCML=?...CO
+4DM|4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO|52R MMAND NOT SUPPOR
+54T|0D |0A                                                      T..             
+Checking for SYNCML/OBEX support
+SENDING frametype 0x00/length 0x0D/13
+41A|54T|24$|54T|53S|53S|50P|43C|53S|57W|3D=|3F?|0D              AT$TSSPCSW=?.   
+1 "AT$TSSPCSW=?"
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x24/36
+41A|54T|24$|54T|53S|53S|50P|43C|53S|57W|3D=|3F?|0D |0D |0A |43C AT$TSSPCSW=?...C
+4FO|4DM|4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S|55U|50P|50P|4FO OMMAND NOT SUPPO
+52R|54T|0D |0A                                                  RT..            
+Setting date & time
+SENDING frametype 0x00/length 0x21/33
+41A|54T|2B+|43C|43C|4CL|4BK|3D=|22"|322|300|311|366|2F/|300|366 AT+CCLK="2016/06
+2F/|300|311|2C,|300|311|3A:|344|355|3A:|300|388|2B+|300|300|22" /01,01:45:08+00"
+0D                                                              .               
+1 "AT+CCLK="2016/06/01,01:45:08+00""
+2 "COMMAND NOT SUPPORT"
+Checking line: COMMAND NOT SUPPORT
+AT reply state: 3
+RECEIVED frametype 0x00/length 0x38/56
+41A|54T|2B+|43C|43C|4CL|4BK|3D=|22"|322|300|311|366|2F/|300|366 AT+CCLK="2016/06
+2F/|300|311|2C,|300|311|3A:|344|355|3A:|300|388|2B+|300|300|22" /01,01:45:08+00"
+0D |0D |0A |43C|4FO|4DM|4DM|41A|4EN|44D|20 |4EN|4FO|54T|20 |53S ...COMMAND NOT S
+55U|50P|50P|4FO|52R|54T|0D |0A                                  UPPORT..        
+Getting firmware versions
+SENDING frametype 0x00/length 0x08/8
+41A|54T|2B+|43C|47G|4DM|52R|0D                                  AT+CGMR.        
+1 "AT+CGMR"
+2 "21.028.00.04.18"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x21/33
+41A|54T|2B+|43C|47G|4DM|52R|0D |0D |0A |322|311|2E.|300|322|388 AT+CGMR...21.028
+2E.|300|300|2E.|300|344|2E.|311|388|0D |0A |0D |0A |4FO|4BK|0D  .00.04.18....OK.
+0A                                                              .               
+Received firmware version: "21.028.00.04.18"
+Number version is "21.028000"
+[Firmware version - "21.028.00.04.18"]
+[Connected]
+Entering GSM_SendSMS
+Trying SMS PDU mode
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|4DM|47G|46F|3D=|300|0D                          AT+CMGF=0.      
+1 "AT+CMGF=0"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x10/16
+41A|54T|2B+|43C|4DM|47G|46F|3D=|300|0D |0D |0A |4FO|4BK|0D |0A  AT+CMGF=0...OK..
+SMS Submit
+Getting SMSC from phone, location 1
+Getting SMSC
+SENDING frametype 0x00/length 0x09/9
+41A|54T|2B+|43C|53S|43C|41A|3F?|0D                              AT+CSCA?.       
+1 "AT+CSCA?"
+2 "+CSCA: "+12063130004",145"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x2C/44
+41A|54T|2B+|43C|53S|43C|41A|3F?|0D |0D |0A |2B+|43C|53S|43C|41A AT+CSCA?...+CSCA
+3A:|20 |22"|2B+|311|322|300|366|333|311|333|300|300|300|344|22" : "+12063130004"
+2C,|311|344|355|0D |0A |0D |0A |4FO|4BK|0D |0A                  ,145....OK..    
+SMSC info received
+Parsing +CSCA: "+12063130004",145 with +CSCA: @p, @i
+Grabbed string from reply: "+12063130004" (parsed 14 bytes)
+Parsed phone string "+12063130004"
+Phone string decoded as "+12063130004"
+Parsed int 145
+Recipient number "+15594929868"
+SMSC number "+12063130004"
+SMS class -1
+SMS validity ff
+TPMR: 00 0
+7 bit SMS, length 36, 41
+465.963 0.371794297966 2.0 465.963148328 
+Waiting for modem prompt
+SENDING frametype 0x00/length 0x0B/11
+41A|54T|2B+|43C|4DM|47G|53S|3D=|355|300|0D                      AT+CMGS=50.     
+1 "AT+CMGS=50"
+2 "> "
+Checking line: > 
+AT reply state: 7
+RECEIVED frametype 0x00/length 0x0F/15
+41A|54T|2B+|43C|4DM|47G|53S|3D=|355|300|0D |0D |0A |3E>|20      AT+CMGS=50...>  
+Sending SMS
+SENDING frametype 0x00/length 0x74/116
+300|377|399|311|322|311|366|300|311|333|300|333|300|300|46F|344 07912160130300F4
+311|311|300|300|300|42B|399|311|355|311|399|355|399|344|399|322 11000B9151959492
+366|388|46F|388|300|300|300|300|46F|46F|322|399|333|344|355|42B 68F80000FF29345B
+43C|44D|399|355|42B|333|43C|44D|344|300|333|300|44D|377|45E|43C CD95B3CD4030D7EC
+311|366|42B|42B|45E|355|366|388|42B|322|44D|43C|322|44D|366|377 16BBE568B2DC2D67
+42B|333|388|311|366|344|322|45E|311|388|388|388|366|366|41A|42B B381642E188866AB
+42B|399|377|322|42B|366|355|399|388|43C|388|366|399|42B|43C|399 B972B6598C869BC9
+377|300|322|300                                                 7020            
+SENDING frametype 0x00/length 0x01/1
+1A                                                              .               
+Leaving GSM_SendSMS
+1 "AT+CMGS=50"
+2 "> 07912160130300F411000B915195949268F80000FF29345BCD95B3CD4030D7EC16BBE568B2DC2D67B381642E188866ABB972B6598C869BC97020"
+3 "+CMGS: 215"
+4 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x98/152
+41A|54T|2B+|43C|4DM|47G|53S|3D=|355|300|0D |0D |0A |3E>|20 |300 AT+CMGS=50...> 0
+377|399|311|322|311|366|300|311|333|300|333|300|300|46F|344|311 7912160130300F41
+311|300|300|300|42B|399|311|355|311|399|355|399|344|399|322|366 1000B91519594926
+388|46F|388|300|300|300|300|46F|46F|322|399|333|344|355|42B|43C 8F80000FF29345BC
+44D|399|355|42B|333|43C|44D|344|300|333|300|44D|377|45E|43C|311 D95B3CD4030D7EC1
+366|42B|42B|45E|355|366|388|42B|322|44D|43C|322|44D|366|377|42B 6BBE568B2DC2D67B
+333|388|311|366|344|322|45E|311|388|388|388|366|366|41A|42B|42B 381642E188866ABB
+399|377|322|42B|366|355|399|388|43C|388|366|399|42B|43C|399|377 972B6598C869BC97
+300|322|300|1A |0D |0A |2B+|43C|4DM|47G|53S|3A:|20 |322|311|355 020...+CMGS: 215
+0D |0A |0D |0A |4FO|4BK|0D |0A                                  ....OK..        
+SMS sent OK
+Parsing +CMGS: 215 with +CMGS: @i
+Parsed int 215
+Entering GSM_SetIncomingSMS
+Getting available SMS memories
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|50P|4DM|53S|3D=|3F?|0D                          AT+CPMS=?.      
+1 "AT+CPMS=?"
+2 "+CPMS: ("SM"),("SM"),("SM")"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x2F/47
+41A|54T|2B+|43C|50P|4DM|53S|3D=|3F?|0D |0D |0A |2B+|43C|50P|4DM AT+CPMS=?...+CPM
+53S|3A:|20 |28(|22"|53S|4DM|22"|29)|2C,|28(|22"|53S|4DM|22"|29) S: ("SM"),("SM")
+2C,|28(|22"|53S|4DM|22"|29)|0D |0A |0D |0A |4FO|4BK|0D |0A      ,("SM")....OK.. 
+Available SMS memories received: read: ME : N/A, SM : ok, save: ME : N/A, SM = ok, Motorola = no
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|4EN|4DM|49I|3D=|3F?|0D                          AT+CNMI=?.      
+1 "AT+CNMI=?"
+2 "+CNMI: (0-2),(0-3),(0,2),(0-2),(0,1)"
+3 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x38/56
+41A|54T|2B+|43C|4EN|4DM|49I|3D=|3F?|0D |0D |0A |2B+|43C|4EN|4DM AT+CNMI=?...+CNM
+49I|3A:|20 |28(|300|2D-|322|29)|2C,|28(|300|2D-|333|29)|2C,|28( I: (0-2),(0-3),(
+300|2C,|322|29)|2C,|28(|300|2D-|322|29)|2C,|28(|300|2C,|311|29) 0,2),(0-2),(0,1)
+0D |0A |0D |0A |4FO|4BK|0D |0A                                  ....OK..        
+Parsing range: (0-2),(0-3),(0,2),(0-2),(0,1)
+Returning range: 0, 1, 2, -1
+Parsing range: (0-3),(0,2),(0-2),(0,1)
+Returning range: 0, 1, 2, 3, -1
+Parsing range: (0,2),(0-2),(0,1)
+Returning range: 0, 2, -1
+Parsing range: (0-2),(0,1)
+Returning range: 0, 1, 2, -1
+Leaving GSM_SetIncomingSMS
+Entering GSM_SetIncomingCall
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|43C|57W|41A|3D=|300|0D                          AT+CCWA=0.      
+1 "AT+CCWA=0"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x10/16
+41A|54T|2B+|43C|43C|57W|41A|3D=|300|0D |0D |0A |4FO|4BK|0D |0A  AT+CCWA=0...OK..
+Disabling incoming call notification
+Leaving GSM_SetIncomingCall
+Entering GSM_SetIncomingCB
+Leaving GSM_SetIncomingCB
+Entering GSM_SetIncomingUSSD
+Terminating possible incoming USSD
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|55U|53S|44D|3D=|322|0D                          AT+CUSD=2.      
+1 "AT+CUSD=2"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x10/16
+41A|54T|2B+|43C|55U|53S|44D|3D=|322|0D |0D |0A |4FO|4BK|0D |0A  AT+CUSD=2...OK..
+Disabling incoming USSD
+SENDING frametype 0x00/length 0x0A/10
+41A|54T|2B+|43C|55U|53S|44D|3D=|300|0D                          AT+CUSD=0.      
+1 "AT+CUSD=0"
+2 "OK"
+Checking line: OK
+AT reply state: 1
+RECEIVED frametype 0x00/length 0x10/16
+41A|54T|2B+|43C|55U|53S|44D|3D=|300|0D |0D |0A |4FO|4BK|0D |0A  AT+CUSD=0...OK..
+Leaving GSM_SetIncomingUSSD
+[Terminating]
+[Closing]

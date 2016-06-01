@@ -1,0 +1,2 @@
+* * * * * root /home/pi/ESW/Pilot_1.x.x/ADC/rms_adc_complete_test.py &
+#* * * * * pi /home/pi/ESW/Pilot_1.x.x/ADC/roger.py &
