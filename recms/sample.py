@@ -47,39 +47,37 @@ GPIO.setup(SPICS, GPIO.OUT)
 
 """ --- START DATA SAMPLING --- """
 line = ''
-for adc_channel in ADC_CHANNELS:
-	main_values = np.zeros(NUM_SAMPLES)
-						
-	trim_pot = 0
-	tic = time.time()
-	for i in range(NUM_SAMPLES): 
+main_values = np.zeros(len(ADC_CHANNELS), NUM_SAMPLES)
+
+tic = time.time()
+for i in range(NUM_SAMPLES):
+	adc_val = 0
+	for adc_channel in ADC_CHANNELS: 
 		# read the analog pin
-		trim_pot = read_adc(adc_channel,SPICLK,SPIMOSI,SPIMISO,SPICS)
-
+		adc_val = read_adc(adc_channel,SPICLK,SPIMOSI,SPIMISO,SPICS)
 		if DEBUG:
-			print "trim_pot:", trim_pot
-
+			print "adc_val:", adc_val
 		# add the value to the array
-		main_values[i] = trim_pot
-	toc = time.time()
-	print("sampling rate: "+10/(tic-toc))
-	""" --- END DATA SAMPLING --- """
+		main_values[adc_channel][i] = adc_val
+toc = time.time()
+print("sampling rate: "+str(len(ADC_CHANNELS)*NUM_SAMPLES/(tic-toc))+"kHz")
 
-	""" --- COLLATE AND OUTPUT RESULTS --- """
+""" --- END DATA SAMPLING --- """
 
-	#print main_values
-
-	avg = np.mean(main_values)
-	acrms = compute_acrms(main_values,avg)
-	vpp = (np.max(main_values)-np.min(main_values))
-	rms = compute_rms(main_values)
+""" --- COLLATE AND OUTPUT RESULTS --- """
+line = ""
+for adc_channel in ADC_CHANNELS:
+	avg = np.mean(main_values[adc_channel][:])
+	acrms = compute_acrms(main_values[adc_channel][:],avg)
+	vpp = (np.max(main_values[adc_channel][:])-np.min(main_values[adc_channel][:]))
+	rms = compute_rms(main_values[adc_channel][:])
 
 	quan = 'V' if adc_channel % 2 == 0 else 'I'
 	unit = 'V' if quan == 'V' else 'A'
 
 	line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+str(acrms*VOLTS_PER_ADC)+' '+unit
 	line += ', '+quan+'pp = '+str(vpp*VOLTS_PER_ADC)+' '+unit+'\n'
-line = line.strip()
-f = open("/home/pi/ESW/Pilot_1.x.x/recms/datatest.txt","w+")
-f.write(line)
-f.close()
+	line = line.strip()
+	f = open("/home/pi/ESW/Pilot_1.x.x/recms/data.txt","w+")
+	f.write(line)
+	f.close()
