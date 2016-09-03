@@ -25,8 +25,7 @@ ADC_MAX = 1023
 ADC_REF = 3.3
 VOLTS_PER_ADC = ADC_REF/ADC_MAX;
 DEBUG = 0
-ADC_CHANNELS = (7 , 6) 
-ADC_CHANNEL = 7
+ADC_CHANNELS = (0,1,2,3,4,5,6,7) 
 NUM_SAMPLES = 10000
 
 # change these as desired - they're the pins connected from the
@@ -63,7 +62,7 @@ for adc_channel in ADC_CHANNELS:
 		# add the value to the array
 		main_values[i] = trim_pot
 	toc = time.time()
-		
+	print("sampling rate: "+10/(tic-toc))
 	""" --- END DATA SAMPLING --- """
 
 	""" --- COLLATE AND OUTPUT RESULTS --- """
