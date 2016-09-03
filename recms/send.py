@@ -8,11 +8,11 @@
 
 import time
 import os
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import math
 import sys
 import argparse
-#import gammu
+import gammu
 import numpy as np
 import recms_lib
 

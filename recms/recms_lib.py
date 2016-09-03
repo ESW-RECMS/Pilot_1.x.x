@@ -6,7 +6,7 @@
  * Date: 2016/05/20
 """
 
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import math
 import numpy as np
 
