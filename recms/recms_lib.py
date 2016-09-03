@@ -6,9 +6,12 @@
  * Date: 2016/05/20
 """
 
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import math
 import numpy as np
+
+datafile = '/home/pi/ESW/Pilot_1.x.x/recms/data.txt'
+number = '+15594929868'
 
 def compute_rms(x):
     return np.sqrt(x.dot(x)/float(x.size))

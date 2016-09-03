@@ -6,9 +6,11 @@
  * Date: 2016/05/20
 """
 
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import math
 import numpy as np
+
+filename = "/home/pi/ESW/Pilot_1.x.x/recms/data.txt"
 
 def compute_rms(x):
     return np.sqrt(x.dot(x)/float(x.size))
