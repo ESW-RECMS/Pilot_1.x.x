@@ -73,7 +73,7 @@ for adc_channel in ADC_CHANNELS:
 	vpp = (np.max(main_values[adc_channel][:])-np.min(main_values[adc_channel][:]))
 	rms = compute_rms(main_values[adc_channel][:])
 
-	quan = 'V' if adc_channel % 2 == 0 else 'I'
+	quan = 'I' if adc_channel < 4 else 'V'
 	unit = 'V' if quan == 'V' else 'A'
 
 	line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+str(acrms*VOLTS_PER_ADC)+' '+unit
