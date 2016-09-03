@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 """
- * File: rms_adc_test.py
+ * File: rms_adc_complete_test.py
  * Authors: ESW Stanford: RECMS 2016
  * Date: 2016/05/20
 """
