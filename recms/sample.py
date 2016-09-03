@@ -48,7 +48,7 @@ GPIO.setup(SPICS, GPIO.OUT)
 
 """ --- START DATA SAMPLING --- """
 line = ''
-main_values = np.zeros(len(ADC_CHANNELS), NUM_SAMPLES)
+main_values = np.zeros((len(ADC_CHANNELS), NUM_SAMPLES))
 
 tic = time.time()
 for i in range(NUM_SAMPLES):
@@ -61,7 +61,7 @@ for i in range(NUM_SAMPLES):
 		# add the value to the array
 		main_values[adc_channel][i] = adc_val
 toc = time.time()
-print("sampling rate: "+str(len(ADC_CHANNELS)*NUM_SAMPLES/(tic-toc))+"kHz")
+print("sampling rate: "+str(len(ADC_CHANNELS)*NUM_SAMPLES/(toc-tic))+" Hz")
 
 """ --- END DATA SAMPLING --- """
 
