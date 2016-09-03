@@ -29,6 +29,10 @@ DEBUG = 0
 ADC_CHANNELS = (0,1,2,3,4,5,6,7) 
 NUM_SAMPLES = 10000
 
+IV_PORT = 4
+VOLTAGE_RATIO = 106.15 # 119.95 V actual /1.13 V measured, based on oscilloscope photo
+CURRENT_RATIO = 3.56 # 793 mA actual / 222.79 mV measured, based on oscilloscope photo
+
 # change these as desired - they're the pins connected from the
 # SPI port on the ADC to the Cobbler
 SPICLK = 18
@@ -73,11 +77,12 @@ for adc_channel in ADC_CHANNELS:
 	vpp = (np.max(main_values[adc_channel][:])-np.min(main_values[adc_channel][:]))
 	rms = compute_rms(main_values[adc_channel][:])
 
-	quan = 'I' if adc_channel < 4 else 'V'
+	quan = 'I' if adc_channel < IV_PORT else 'V'
 	unit = 'V' if quan == 'V' else 'A'
+	gain = VOLTAGE_RATIO if quan == 'V' else CURRENT_RATIO
 
-	line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+str(acrms*VOLTS_PER_ADC)+' '+unit
-	line += ', '+quan+'pp = '+str(vpp*VOLTS_PER_ADC)+' '+unit+'\n'
+	line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+str(acrms*gain*VOLTS_PER_ADC)+' '+unit
+	line += ', '+quan+'pp = '+str(vpp*gain*VOLTS_PER_ADC)+' '+unit+'\n'
 
 line = line.strip()
 f = open(recms_lib.datafile,"w+")
