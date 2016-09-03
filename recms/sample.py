@@ -80,8 +80,7 @@ for adc_channel in ADC_CHANNELS:
 
 	line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+str(acrms*VOLTS_PER_ADC)+' '+unit
 	line += ', '+quan+'pp = '+str(vpp*VOLTS_PER_ADC)+' '+unit+'\n'
-
 line = line.strip()
-f = open("/home/pi/ESW/Pilot_1.x.x/ADC/datatest.txt","w")
+f = open("/home/pi/ESW/Pilot_1.x.x/recms/datatest.txt","w+")
 f.write(line)
 f.close()
