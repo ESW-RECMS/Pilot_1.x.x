@@ -1,8 +1,8 @@
-ADC0: Irms = 0.00433949477247 A, Ipp = 0.0225806451613 A
-ADC1: Vrms = 0.00432833260776 V, Vpp = 0.0290322580645 V
-ADC2: Irms = 0.00447418266389 A, Ipp = 0.0258064516129 A
-ADC3: Vrms = 0.314525797462 V, Vpp = 2.14838709677 V
-ADC4: Irms = 0.0 A, Ipp = 0.0 A
-ADC5: Vrms = 0.0 V, Vpp = 0.0 V
-ADC6: Irms = 0.0 A, Ipp = 0.0 A
-ADC7: Vrms = 0.0 V, Vpp = 0.0 V
+ADC0: Irms = 0.015 A, Ipp = 0.115 A
+ADC1: Irms = 0.015 A, Ipp = 0.126 A
+ADC2: Irms = 0.016 A, Ipp = 0.161 A
+ADC3: Irms = 0.567 A, Ipp = 5.294 A
+ADC4: Vrms = 0.000 V, Vpp = 0.000 V
+ADC5: Vrms = 0.000 V, Vpp = 0.000 V
+ADC6: Vrms = 0.000 V, Vpp = 0.000 V
+ADC7: Vrms = 0.000 V, Vpp = 0.000 V

@@ -16,10 +16,8 @@ import gammu
 import numpy as np
 import recms_lib
 
-print message
-
 text = ''
-f = open(recms_lib.filename, 'r+')
+f = open(recms_lib.datafile, 'r+')
 f.seek(0)
 for line in f:
 	text += line

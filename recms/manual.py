@@ -6,6 +6,5 @@
  * Date: 2016/09/02
 """
 
-execfile("debug.py")
 execfile("sample.py")
 execfile("send.py")

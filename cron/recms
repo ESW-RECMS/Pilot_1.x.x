@@ -1,3 +1,4 @@
 # this must be copied into the /etc/cron.d folder on the Raspberry Pi
 @reboot root git --git-dir=/home/pi/ESW/Pilot_1.x.x/.git pull
-* * * * * root /home/pi/ESW/Pilot_1.x.x/ADC/rms_adc_complete_test.py &
+* * * * * root /home/pi/ESW/Pilot_1.x.x/recms/sample.py &
+#0 * * * * root /home/pi/ESW/Pilot_1.x.x/recms/send.py &

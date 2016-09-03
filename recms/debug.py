@@ -7,4 +7,4 @@
 """
 import recms_lib
 
-print recms_lib.filename
+print recms_lib.datafile
