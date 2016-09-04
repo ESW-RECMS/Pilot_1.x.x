@@ -21,14 +21,27 @@ ADC_CHANNELS = (0,1,2,3,4,5,6,7)
 text = ''
 f = open(recms_lib.datafile, 'r+')
 num_lines = len(f.readlines())
-file_values = np.zeros(len(ADC_CHANNELS))
-
+pp_values = np.zeros(len(ADC_CHANNELS))
+rms_values = np.zeros(len(ADC_CHANNELS))
 f.seek(0)
 for line in f:
 	line_vector = line.split(',')
 	for i in line_vector:
-		file_values[i]+=float(line_vector[i])/num_lines
+		if i%2==0:
+			rms_values[i]+=float(line_vector[i])/num_lines
+		else
+			pp_values[i]+=float(line_vector[i])/num_lines
+
 f.close()
+
+#verbose text
+for i in range(rms_values):
+	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+":"+rms_values[i]+'\n'
+	
+#csv test
+#for i in range(rms_values):
+#	text+=rms_values[i]+','
+#text = text[:-1]
 
 message = {
 	'Text' : text,

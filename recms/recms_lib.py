@@ -12,6 +12,22 @@ import numpy as np
 
 datafile = '/home/pi/ESW/Pilot_1.x.x/recms/data.txt'
 number = '+15594929868'
+def adc_to_channel(x):
+	if(x>3):
+		return x-3
+	else:
+		return x+1
+
+def get_adc_unit(x):
+	if(x>3):
+		return 'V'
+	else:
+		return 'A'
+def get_adc_type(x):
+	if(x>3):
+		return 'V'
+	else:
+		return 'I'
 
 def compute_rms(x):
     return np.sqrt(x.dot(x)/float(x.size))
