@@ -16,14 +16,19 @@ import gammu
 import numpy as np
 import recms_lib
 
+ADC_CHANNELS = (0,1,2,3,4,5,6,7) 
+
 text = ''
 f = open(recms_lib.datafile, 'r+')
+num_lines = len(f.readlines())
+file_values = np.zeros(len(ADC_CHANNELS))
+
 f.seek(0)
 for line in f:
-	text += line
+	line_vector = line.split(',')
+	for i in line_vector:
+		file_values[i]+=float(line_vector[i])/num_lines
 f.close()
-print text
-
 
 message = {
 	'Text' : text,
