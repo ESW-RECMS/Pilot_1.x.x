@@ -56,7 +56,6 @@ main_values = np.zeros((len(ADC_CHANNELS), NUM_SAMPLES))
 
 tic = time.time()
 for i in range(NUM_SAMPLES):
-	adc_val = 0
 	for adc_channel in ADC_CHANNELS: 
 		# read the analog pin
 		adc_val = read_adc(adc_channel,SPICLK,SPIMOSI,SPIMISO,SPICS)

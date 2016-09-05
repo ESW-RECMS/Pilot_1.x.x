@@ -17,6 +17,7 @@ import numpy as np
 import recms_lib
 
 ADC_CHANNELS = (0,1,2,3,4,5,6,7) 
+PARTITIONS = 2 #must be a multiple of len(ADC_CHANNELS)
 
 text = ''
 f = open(recms_lib.datafile, 'r+')
@@ -36,21 +37,27 @@ f.close()
 
 #verbose text
 for i in range(rms_values):
-	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+":"+rms_values[i]+'\n'
-	
-#csv test
+	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+recms_lib.get_adc_unit(i)+":"+rms_values[i]+'\n'
+
+#csv text
 #for i in range(rms_values):
 #	text+=rms_values[i]+','
-#text = text[:-1]
+#	text = text[:-1]
 
-message = {
-	'Text' : text,
-	'SMSC' : {'Location':1},
-	'Number' : recms_lib.number
-}
+	if((i+1)%(len(ADC_CHANNELS)/PARTITIONS)==0):
+		message = {
+			'Text' : text,
+			'SMSC' : {'Location':1},
+			'Number' : recms_lib.number
+		}
 
-sm = gammu.StateMachine()
-sm.ReadConfig(0,0,'/etc/gammurc')
-sm.Init()
-sm.SendSMS(message)
-sm.Terminate()
+		sm = gammu.StateMachine()
+		sm.ReadConfig(0,0,'/etc/gammurc')
+		sm.Init()
+		sm.SendSMS(message)
+		sm.Terminate()
+		text=''
+
+
+
+
