@@ -79,7 +79,7 @@ for adc_channel in ADC_CHANNELS:
 	quan = 'I' if adc_channel < IV_PORT else 'V'
 	unit = 'V' if quan == 'V' else 'A'
 	gain = VOLTAGE_RATIO if quan == 'V' else CURRENT_RATIO
-	line+="%.3f" % (acrms*gain*VOLTS_PER_ADC)','+"%.3f" % (vpp*gain*VOLTS_PER_ADC)+','
+	line+="%.3f" % (acrms*gain*VOLTS_PER_ADC)+','+"%.3f" % (vpp*gain*VOLTS_PER_ADC)+','
 	#line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+"%.3f" % (acrms*gain*VOLTS_PER_ADC)+' '+unit
 	#line += ', '+quan+'pp = '+"%.3f" % (vpp*gain*VOLTS_PER_ADC)+' '+unit+'\n'
 

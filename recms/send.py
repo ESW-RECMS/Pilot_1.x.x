@@ -27,17 +27,17 @@ rms_values = np.zeros(len(ADC_CHANNELS))
 f.seek(0)
 for line in f:
 	line_vector = line.split(',')
-	for i in line_vector:
+	for i in range(len(line_vector)):
 		if i%2==0:
-			rms_values[i]+=float(line_vector[i])/num_lines
-		else
-			pp_values[i]+=float(line_vector[i])/num_lines
+			rms_values[i/2]+=float(line_vector[i])/num_lines
+		else:
+			pp_values[i/2]+=float(line_vector[i])/num_lines
 
 f.close()
 
 #verbose text
-for i in range(rms_values):
-	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+recms_lib.get_adc_unit(i)+":"+rms_values[i]+'\n'
+for i in range(len(rms_values)):
+	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+":"+str(rms_values[i])+recms_lib.get_adc_unit(i)+'\n'
 
 #csv text
 #for i in range(rms_values):
@@ -55,6 +55,7 @@ for i in range(rms_values):
 		sm.ReadConfig(0,0,'/etc/gammurc')
 		sm.Init()
 		sm.SendSMS(message)
+		print("sent: "+text)
 		sm.Terminate()
 		text=''
 
