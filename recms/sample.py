@@ -3,7 +3,7 @@
 """
  * File: sample.py
  * Authors: ESW Stanford: RECMS 2016
- * Date: 2016/09/02
+ * Date: 2016/09/06
 """
 
 import time
