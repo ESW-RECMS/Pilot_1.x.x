@@ -20,7 +20,7 @@ ADC_CHANNELS = (0,1,2,3,4,5,6,7)
 PARTITIONS = 2 #must be a multiple of len(ADC_CHANNELS)
 
 text = ''
-f = open(recms_lib.datafile, 'r+')
+f = open(recms_lib.datafile, 'wr+')
 num_lines = len(f.readlines())
 pp_values = np.zeros(len(ADC_CHANNELS))
 rms_values = np.zeros(len(ADC_CHANNELS))

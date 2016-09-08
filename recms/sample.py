@@ -85,6 +85,6 @@ for adc_channel in ADC_CHANNELS:
 
 line = line.strip()
 line = line[:-1]+'\n'
-f = open(recms_lib.datafile,"w+")
+f = open(recms_lib.datafile,"a")
 f.write(line)
 f.close()
