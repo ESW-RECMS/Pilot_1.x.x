@@ -61,8 +61,9 @@ for i in range(NUM_SAMPLES):
 		adc_val = read_adc(adc_channel,SPICLK,SPIMOSI,SPIMISO,SPICS)
 		if DEBUG:
 			print "adc_val:", adc_val
-		# add the value to the array
-		main_values[adc_channel][i] = adc_val*VOLTS_PER_ADC
+		# add the corrected value to the array
+		gain = CURRENT_RATIO if adc_channel<IV_PORT else VOLTAGE_RATIO
+		main_values[adc_channel][i] = adc_val*VOLTS_PER_ADC*gain
 toc = time.time()
 print("sampling rate: "+str(len(ADC_CHANNELS)*NUM_SAMPLES/(toc-tic))+" Hz")
 
@@ -77,8 +78,7 @@ for adc_channel in ADC_CHANNELS:
 	rms = compute_rms(main_values[adc_channel][:])
 	quan = 'I' if adc_channel < IV_PORT else 'V'
 	unit = 'V' if quan == 'V' else 'A'
-	gain = VOLTAGE_RATIO if quan == 'V' else CURRENT_RATIO
-	line+="%.3f" % (acrms*gain)+','+"%.3f" % (vpp*gain)+','
+	line+="%.3f" % acrms+','+"%.3f" % vpp +','
 	#line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+"%.3f" % (acrms*gain*VOLTS_PER_ADC)+' '+unit
 	#line += ', '+quan+'pp = '+"%.3f" % (vpp*gain*VOLTS_PER_ADC)+' '+unit+'\n'
 
