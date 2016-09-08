@@ -20,7 +20,7 @@ ADC_CHANNELS = (0,1,2,3,4,5,6,7)
 PARTITIONS = 2 #must be a multiple of len(ADC_CHANNELS)
 
 text = ''
-f = open(recms_lib.datafile, 'wr+')
+f = open(recms_lib.datafile, 'r+')
 num_lines = len(f.readlines())
 pp_values = np.zeros(len(ADC_CHANNELS))
 rms_values = np.zeros(len(ADC_CHANNELS))
@@ -51,13 +51,15 @@ for i in range(len(rms_values)):
 			'Number' : recms_lib.number
 		}
 
-		sm = gammu.StateMachine()
-		sm.ReadConfig(0,0,'/etc/gammurc')
-		sm.Init()
-		sm.SendSMS(message)
+		#sm = gammu.StateMachine()
+		#sm.ReadConfig(0,0,'/etc/gammurc')
+		#sm.Init()
+		#sm.SendSMS(message)
 		print("sent: "+text)
-		sm.Terminate()
+		#sm.Terminate()
 		text=''
+
+open(recms_lib.datafile, 'w').close()
 
 
 
