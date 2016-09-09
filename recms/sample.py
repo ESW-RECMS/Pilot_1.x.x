@@ -30,7 +30,7 @@ ADC_CHANNELS = (0,1,2,3,4,5,6,7)
 NUM_SAMPLES = 10000
 
 IV_PORT = 4
-VOLTAGE_RATIO = 1.26*456.09 # 119.95 V actual / 0.263 V measured, based on oscilloscope photo
+VOLTAGE_RATIO = 456.09 # 119.95 V actual / 0.263 V measured, based on oscilloscope photo
 CURRENT_RATIO = 3.56 # 793 mA actual / 222.79 mV measured, based on oscilloscope photo
 
 # change these as desired - they're the pins connected from the
@@ -78,7 +78,8 @@ for adc_channel in ADC_CHANNELS:
 	rms = compute_rms(main_values[adc_channel][:])
 	quan = 'I' if adc_channel < IV_PORT else 'V'
 	unit = 'V' if quan == 'V' else 'A'
-	line+="%.3f" % acrms+','+"%.3f" % vpp +','
+	#gain = CURRENT_RATIO if adc_channel<IV_PORT else VOLTAGE_RATIO
+	line+="%.3f" % (acrms)+','+"%.3f" % (vpp) +','
 	#line += 'ADC'+str(adc_channel)+': '+quan+'rms = '+"%.3f" % (acrms*gain*VOLTS_PER_ADC)+' '+unit
 	#line += ', '+quan+'pp = '+"%.3f" % (vpp*gain*VOLTS_PER_ADC)+' '+unit+'\n'
 

@@ -29,10 +29,15 @@ for line in f:
 	line_vector = line.split(',')
 	for i in range(len(line_vector)):
 		if i%2==0:
-			rms_values[i/2]+=float(line_vector[i])/num_lines
+			try:
+				rms_values[i/2]+=float(line_vector[i])/num_lines
+			except ValueError:
+				rms_values[i/2]+=0
 		else:
-			pp_values[i/2]+=float(line_vector[i])/num_lines
-
+			try:
+				pp_values[i/2]+=float(line_vector[i])/num_lines
+			except ValueError:
+				pp_values[i/2]+=0
 f.close()
 
 #verbose text
@@ -47,16 +52,16 @@ for i in range(len(rms_values)):
 	if((i+1)%(len(ADC_CHANNELS)/PARTITIONS)==0):
 		message = {
 			'Text' : text,
-			'SMSC' : {'Location':1},
+			'SMSC' : {'Location':62},
 			'Number' : recms_lib.number
 		}
 
-		#sm = gammu.StateMachine()
-		#sm.ReadConfig(0,0,'/etc/gammurc')
-		#sm.Init()
-		#sm.SendSMS(message)
+		sm = gammu.StateMachine()
+		sm.ReadConfig(0,0,'/etc/gammurc')
+		sm.Init()
+		sm.SendSMS(message)
 		print("sent: "+text)
-		#sm.Terminate()
+		sm.Terminate()
 		text=''
 
 open(recms_lib.datafile, 'w').close()

@@ -11,7 +11,7 @@ import math
 import numpy as np
 
 datafile = '/home/pi/ESW/Pilot_1.x.x/recms/data.txt'
-number = '+15594929868'
+number = '+6281222228821'
 def adc_to_channel(x):
 	if(x>3):
 		return x-3
