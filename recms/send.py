@@ -42,7 +42,7 @@ f.close()
 
 #verbose text
 for i in range(len(rms_values)):
-	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+":"+str(rms_values[i])+recms_lib.get_adc_unit(i)+'\n'
+	text+=recms_lib.get_adc_type(i)+str(recms_lib.adc_to_channel(i))+":"+("%.3f" % rms_values[i] )+ recms_lib.get_adc_unit(i)+'\n'
 
 #csv text
 #for i in range(rms_values):
@@ -52,7 +52,7 @@ for i in range(len(rms_values)):
 	if((i+1)%(len(ADC_CHANNELS)/PARTITIONS)==0):
 		message = {
 			'Text' : text,
-			'SMSC' : {'Location':62},
+			'SMSC' : {'Location':1},
 			'Number' : recms_lib.number
 		}
 
