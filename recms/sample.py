@@ -30,7 +30,7 @@ ADC_CHANNELS = (0,1,2,3,4,5,6,7)
 NUM_SAMPLES = 10000
 
 IV_PORT = 4
-VOLTAGE_RATIO = 456.09 # 119.95 V actual / 0.263 V measured, based on oscilloscope photo
+VOLTAGE_RATIO =1.26*456.09 # 119.95 V actual / 0.263 V measured, based on oscilloscope photo.  Added a factor of 1.26 to make correction for 240V.  
 CURRENT_RATIO = 3.56 # 793 mA actual / 222.79 mV measured, based on oscilloscope photo
 
 # change these as desired - they're the pins connected from the

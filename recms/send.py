@@ -17,7 +17,7 @@ import numpy as np
 import recms_lib
 
 ADC_CHANNELS = (0,1,2,3,4,5,6,7) 
-PARTITIONS = 2 #must be a multiple of len(ADC_CHANNELS)
+PARTITIONS = 1 #must be a multiple of len(ADC_CHANNELS)
 
 text = ''
 f = open(recms_lib.datafile, 'r+')
